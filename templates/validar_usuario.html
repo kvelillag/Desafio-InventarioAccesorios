@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <!-- My CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+        <title>Handmade Jewellery</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="container-fluid">
+                <div id="col2" class="text-center">
+                    <a href="#">
+                        <img id="logo" src="{{ url_for('static', filename='img/HANDMADE.png') }}">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="navbar justify-content-center" style="z-index: 100;">
+                <div>
+                    <h1 style="color: white; font-weight: 600; font-size: 20px; text-align: center; margin: 0;">Sistema de Gestión: Inventario de Accesorios</h1> 
+                </div>
+            </nav>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{message}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor  %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="container" style="padding: 20px;">
+            <div class="row" style="margin: 0; text-align: center;">
+                <div class="col-md-6 col-12" style="margin: auto;">
+                    <img src="{{ url_for('static', filename='img/store.jpg') }}" alt="tienda" width="90%">
+                </div>
+                <div class="col-md-6 col-12" style="margin-top: 20px;">
+                    <div class="container1" style="padding: 30px;">
+                        <div class="text">Validar Usuario</div>
+                        <form name="validarusuario" method="post" action="{{ url_for('validarusuario')}}">
+                            <div class="data1">
+                                <label>Usuario:</label>
+                                <input type="text" name="usuario_registrado" id="usuario_registrado" placeholder="Ingrese su nombre de usuario" required>
+                            </div>
+                            <div class="data1">
+                                <label>Correo electrónico:</label>
+                                <input type="email" name="correo" id="correo" placeholder="ejemplo@ejemplo.com" required>
+                            </div>
+
+                            <div class="btn1">
+                                <div class="inner"></div>
+                                <button type="submit">Validar Usuario</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

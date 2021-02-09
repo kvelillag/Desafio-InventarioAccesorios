@@ -1,0 +1,13 @@
+[unit]
+Description=Instancio de Gunicorn
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/flaskProject
+Environment="PATH=cd"
+ExecStart=/home/ubuntu/flaskProject/menv/bin/gunicorn --workers=20 --bind 0.0.0.0:443 --certfile=micertificado.pem --keyfile=llaveprivada.pem wsgi:application 
+
+[Install]
+WantedBy=multi-user.target
